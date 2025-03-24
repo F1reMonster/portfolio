@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -6,8 +6,8 @@
 	/* BREAKPOINTS */
 	--breakpoint-xs: 575px;
 	/* FONTS */
-	--font-montserrat: "Montserrat", sans-serif;
-	--font-josefin-sans: "Josefin Sans", sans-serif;
+	--font-montserrat: 'Montserrat', sans-serif;
+	--font-josefin-sans: 'Josefin Sans', sans-serif;
 
 	/* COLORS */
 	--color-mine-shaft: #202020;
@@ -19,13 +19,14 @@
 	--color-html: #ff6d00;
 
 	/* ANIMATION */
-	--animate-run: run 15s 0s infinite forwards cubic-bezier(0.49, 0.01, 0.43, 0.97);
+	--animate-run: run 15s 0s infinite forwards
+		cubic-bezier(0.49, 0.01, 0.43, 0.97);
 	--animate-show-line: show-line 700ms ease-in-out 0s forwards;
 	--animate-loader-line: loader-line 2s cubic-bezier(0.86, 0, 0.07, 1) infinite;
 	--animate-blinked: blinked 1s infinite;
 
 	/* KEYFRAMES */
-	
+
 	@keyframes run {
 		0% {
 			top: -50%;
@@ -136,7 +137,7 @@
 }
 
 @utility animation-delay-* {
-	animation-delay: --value(integer)ms;
+	animation-delay: --value(integer) ms;
 }
 
 @utility scrollbar {
@@ -151,6 +152,5 @@
 
 	&::-webkit-scrollbar-thumb {
 		@apply bg-crimson rounded-md;
-		
 	}
 }

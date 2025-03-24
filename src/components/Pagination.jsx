@@ -1,5 +1,5 @@
 // Pagination.js - компонент для пагінації
-import { ChevronLeft, ChevronRight } from "./Icons";
+import { ChevronLeft, ChevronRight } from './Icons';
 
 function Pagination({ currentPage, totalPages, paginate, prevPage, nextPage }) {
 	// Функція для створення масиву кнопок пагінації
@@ -8,12 +8,12 @@ function Pagination({ currentPage, totalPages, paginate, prevPage, nextPage }) {
 		const siblingsCount = 2; // Кількість кнопок з кожного боку від поточної сторінки
 
 		// Функція для додавання кнопки
-		const addPageButton = (pageNum) => {
+		const addPageButton = pageNum => {
 			buttons.push(
 				<button
 					key={pageNum}
 					onClick={() => paginate(pageNum)}
-					className={`flex h-8 w-8 items-center justify-center rounded-md border transition-colors duration-300 ${currentPage === pageNum ? "border-gray-700 bg-gray-700 text-white dark:border-gray-200" : "bg-gray-200 border-gray-200 text-gray-700 hover:bg-gray-300"}`}
+					className={`flex h-8 w-8 items-center justify-center rounded-md border transition-colors duration-300 ${currentPage === pageNum ? 'border-gray-700 bg-gray-700 text-white dark:border-gray-200' : 'border-gray-200 bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
 				>
 					{pageNum}
 				</button>,
@@ -21,7 +21,7 @@ function Pagination({ currentPage, totalPages, paginate, prevPage, nextPage }) {
 		};
 
 		// Функція для додавання три крапки
-		const addEllipsis = (key) => {
+		const addEllipsis = key => {
 			buttons.push(
 				<span key={key} className="flex w-8 items-center justify-center">
 					...
@@ -37,7 +37,7 @@ function Pagination({ currentPage, totalPages, paginate, prevPage, nextPage }) {
 
 		// Додаємо три крапки після першої сторінки, якщо початкова сторінка більше 2
 		if (startPage > 2) {
-			addEllipsis("leftEllipsis");
+			addEllipsis('leftEllipsis');
 		}
 
 		// Кінцева сторінка для відображення
@@ -50,7 +50,7 @@ function Pagination({ currentPage, totalPages, paginate, prevPage, nextPage }) {
 
 		// Додаємо три крапки перед останньою сторінкою, якщо endPage менше totalPages - 1
 		if (endPage < totalPages - 1) {
-			addEllipsis("rightEllipsis");
+			addEllipsis('rightEllipsis');
 		}
 
 		// Додаємо останню сторінку, якщо totalPages більше 1
@@ -62,11 +62,11 @@ function Pagination({ currentPage, totalPages, paginate, prevPage, nextPage }) {
 	};
 
 	return (
-		<div className="flex items-center justify-center space-x-1 font-montserrat">
+		<div className="font-montserrat flex items-center justify-center space-x-1">
 			<button
 				onClick={prevPage}
 				disabled={currentPage === 1}
-				className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors duration-300 ${currentPage === 1 ? "cursor-not-allowed bg-gray-200 text-gray-400" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+				className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors duration-300 ${currentPage === 1 ? 'cursor-not-allowed bg-gray-200 text-gray-400' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
 			>
 				<ChevronLeft />
 			</button>
@@ -76,7 +76,7 @@ function Pagination({ currentPage, totalPages, paginate, prevPage, nextPage }) {
 			<button
 				onClick={nextPage}
 				disabled={currentPage === totalPages}
-				className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors duration-300 ${currentPage === totalPages ? "cursor-not-allowed bg-gray-200 text-gray-400" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+				className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors duration-300 ${currentPage === totalPages ? 'cursor-not-allowed bg-gray-200 text-gray-400' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
 			>
 				<ChevronRight />
 			</button>

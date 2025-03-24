@@ -1,10 +1,10 @@
-import Footer from "../components/Footer";
-import Lines from "../components/Lines";
-import Preloader from "../components/Preloader";
-import ProjectCards from "../components/Projects";
-import Socials from "../components/Socials";
-import TheHeader from "../components/TheHeader";
-import ThemeSwitcher from "../components/ThemeSwitcher";
+import Footer from '../components/Footer';
+import Lines from '../components/Lines';
+import Preloader from '../components/Preloader';
+import ProjectCards from '../components/Projects';
+import Socials from '../components/Socials';
+import TheHeader from '../components/TheHeader';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 function App() {
 	return (
@@ -13,9 +13,9 @@ function App() {
 			<Socials />
 			<ThemeSwitcher />
 			<TheHeader />
-			<main className="flex-1 flex flex-col">
+			<main className="flex flex-1 flex-col">
 				<Lines />
-				<div className="container flex flex-col flex-1">
+				<div className="container flex flex-1 flex-col">
 					<ProjectCards />
 				</div>
 			</main>

@@ -1,6 +1,11 @@
 export const SunIcon = ({ width = 24, height = 24 }) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			viewBox="0 0 24 24"
+		>
 			<path
 				fill="none"
 				stroke="currentColor"
@@ -15,7 +20,12 @@ export const SunIcon = ({ width = 24, height = 24 }) => {
 
 export const MoonIcon = ({ width = 24, height = 24 }) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			viewBox="0 0 24 24"
+		>
 			<path
 				fill="none"
 				stroke="currentColor"
@@ -30,13 +40,39 @@ export const MoonIcon = ({ width = 24, height = 24 }) => {
 
 export const ChevronLeft = ({ width = 24, height = 24 }) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24">
-			<path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m14 16l-4-4l4-4"></path>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			viewBox="0 0 24 24"
+		>
+			<path
+				fill="none"
+				stroke="currentColor"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth={2}
+				d="m14 16l-4-4l4-4"
+			></path>
 		</svg>
 	);
 };
 export const ChevronRight = ({ width = 24, height = 24 }) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m10 8l4 4l-4 4"></path></svg>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			viewBox="0 0 24 24"
+		>
+			<path
+				fill="none"
+				stroke="currentColor"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth={2}
+				d="m10 8l4 4l-4 4"
+			></path>
+		</svg>
 	);
 };

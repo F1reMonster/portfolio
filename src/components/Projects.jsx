@@ -1,12 +1,12 @@
 // ProjectCards.js - основний компонент
-import { useState, useEffect } from "react";
-import TagFilters from "./TagFilters";
-import ProjectCard from "./ProjectCard";
-import Pagination from "./Pagination";
+import { useState, useEffect } from 'react';
+import TagFilters from './TagFilters';
+import ProjectCard from './ProjectCard';
+import Pagination from './Pagination';
 
 function ProjectCards({ itemsPerPage }) {
 	const [projects, setProjects] = useState([]);
-	const [activeFilter, setActiveFilter] = useState("all");
+	const [activeFilter, setActiveFilter] = useState('all');
 	const [allTags, setAllTags] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -17,37 +17,44 @@ function ProjectCards({ itemsPerPage }) {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch("/data/projects.json")
-			.then((response) => {
+		fetch('/data/projects.json')
+			.then(response => {
 				if (!response.ok) {
 					throw new Error(`HTTP error! Status: ${response.status}`);
 				}
 				return response.json();
 			})
-			.then((data) => {
+			.then(data => {
 				const sortedProjects = data.sort((a, b) => b.date - a.date);
 				setProjects(sortedProjects);
 
 				// Збираємо всі унікальні теги з даних
 				const tagsSet = new Set();
-				sortedProjects.forEach((project) => {
-					project.tags.forEach((tag) => tagsSet.add(tag.tagName));
+				sortedProjects.forEach(project => {
+					project.tags.forEach(tag => tagsSet.add(tag.tagName));
 				});
 
-				const sortedTags = Array.from(tagsSet).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+				const sortedTags = Array.from(tagsSet).sort((a, b) =>
+					a.toLowerCase().localeCompare(b.toLowerCase()),
+				);
 
 				setAllTags(sortedTags);
 				setLoading(false);
 			})
-			.catch((error) => {
-				console.error("Помилка завантаження даних:", error);
+			.catch(error => {
+				console.error('Помилка завантаження даних:', error);
 				setError(error.message);
 				setLoading(false);
 			});
 	}, []);
 
 	// Фільтруємо проекти за обраним тегом
-	const filteredProjects = activeFilter === "all" ? projects : projects.filter((project) => project.tags.some((tag) => tag.tagName === activeFilter));
+	const filteredProjects =
+		activeFilter === 'all'
+			? projects
+			: projects.filter(project =>
+					project.tags.some(tag => tag.tagName === activeFilter),
+				);
 
 	// Змінюємо сторінку на першу при зміні фільтра
 	useEffect(() => {
@@ -57,13 +64,16 @@ function ProjectCards({ itemsPerPage }) {
 	// Розрахунок поточних проектів для відображення
 	const indexOfLastProject = currentPage * projectsPerPage;
 	const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-	const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+	const currentProjects = filteredProjects.slice(
+		indexOfFirstProject,
+		indexOfLastProject,
+	);
 
 	// Загальна кількість сторінок
 	const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
 
 	// Функція зміни сторінки
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
+	const paginate = pageNumber => setCurrentPage(pageNumber);
 
 	// Функція для переходу на наступну сторінку
 	const nextPage = () => {
@@ -92,9 +102,15 @@ function ProjectCards({ itemsPerPage }) {
 	if (error) {
 		return (
 			<div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-				<div className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert">
+				<div
+					className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700"
+					role="alert"
+				>
 					<strong className="font-bold">Помилка!</strong>
-					<span className="block sm:inline"> Не вдалося завантажити проекти: {error}</span>
+					<span className="block sm:inline">
+						{' '}
+						Не вдалося завантажити проекти: {error}
+					</span>
 				</div>
 			</div>
 		);
@@ -105,13 +121,22 @@ function ProjectCards({ itemsPerPage }) {
 	return (
 		<>
 			{/* Компонент фільтрів за тегами */}
-			<TagFilters activeFilter={activeFilter} setActiveFilter={setActiveFilter} allTags={allTags} />
+			<TagFilters
+				activeFilter={activeFilter}
+				setActiveFilter={setActiveFilter}
+				allTags={allTags}
+			/>
 
 			{/* Сітка карточок */}
 			<div className="flex-1">
 				<div className="xs:grid-cols-2 mt-8 grid grid-cols-1 gap-4 pb-4 lg:grid-cols-3">
 					{currentProjects.map((project, index) => (
-						<ProjectCard key={index} project={project} index={index} latestProjectDate={latestProjectDate} />
+						<ProjectCard
+							key={index}
+							project={project}
+							index={index}
+							latestProjectDate={latestProjectDate}
+						/>
 					))}
 				</div>
 			</div>
@@ -125,12 +150,22 @@ function ProjectCards({ itemsPerPage }) {
 
 			{/* Компонент пагінації */}
 			<div className="mt-auto">
-				{totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} paginate={paginate} prevPage={prevPage} nextPage={nextPage} />}
+				{totalPages > 1 && (
+					<Pagination
+						currentPage={currentPage}
+						totalPages={totalPages}
+						paginate={paginate}
+						prevPage={prevPage}
+						nextPage={nextPage}
+					/>
+				)}
 
 				{/* Відображення інформації про пагінацію */}
 				{filteredProjects.length > 0 && (
 					<div className="mt-4 text-center text-sm text-gray-500 dark:text-white">
-						shown {indexOfFirstProject + 1}-{Math.min(indexOfLastProject, filteredProjects.length)} from {filteredProjects.length} projects
+						shown {indexOfFirstProject + 1}-
+						{Math.min(indexOfLastProject, filteredProjects.length)} from{' '}
+						{filteredProjects.length} projects
 					</div>
 				)}
 			</div>

@@ -8,6 +8,6 @@ const Lines = () => {
 			<div className="line"></div>
 		</div>
 	);
-}
+};
 
 export default Lines;
