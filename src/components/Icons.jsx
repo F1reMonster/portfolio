@@ -76,3 +76,23 @@ export const ChevronRight = ({ width = 24, height = 24 }) => {
 		</svg>
 	);
 };
+
+export const PcIcon = ({ width = 24, height = 24 }) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			width={width}
+			height={height}
+			viewBox="0 0 24 24"
+		>
+			<path
+				stroke="currentColor"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth={1.5}
+				d="M18 3H6a3 3 0 00-3 3v8a3 3 0 003 3h12a3 3 0 003-3V6a3 3 0 00-3-3zm-6 14v4m-3 0h6M3 14h18"
+			></path>
+		</svg>
+	);
+};

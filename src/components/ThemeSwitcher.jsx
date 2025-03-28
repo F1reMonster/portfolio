@@ -1,30 +1,3 @@
-// import { useState, useEffect } from "react";
-// import { MoonIcon, SunIcon } from "./Icons";
-
-// function ThemeSwitcher() {
-// 	const [darkTheme, setDarkTheme] = useState(() => localStorage.getItem("theme") === "dark");
-
-// 	useEffect(() => {
-// 		const root = document.documentElement;
-// 		darkTheme ? root.classList.add("dark") : root.classList.remove("dark");
-// 	}, [darkTheme]);
-
-// 	function themeHandler() {
-// 		setDarkTheme(!darkTheme);
-// 		darkTheme ? localStorage.setItem("theme", "light") : localStorage.setItem("theme", "dark");
-// 	}
-
-// 	return (
-// 		<div className="absolute top-4 right-4">
-// 			<button onClick={themeHandler} className="flex h-8 w-8 cursor-pointer items-center justify-center rounded bg-black text-white dark:bg-white dark:text-black">
-// 				{darkTheme ? <SunIcon /> : <MoonIcon />}
-// 			</button>
-// 		</div>
-// 	);
-// }
-
-// export default ThemeSwitcher;
-
 import { useState, useEffect } from 'react';
 import { MoonIcon, SunIcon } from './Icons';
 
