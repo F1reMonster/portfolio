@@ -1,5 +1,30 @@
 [
 	{
+		"date": "1743787598",
+		"title": "InStory Space",
+		"cover": "https://i.imgur.com/xayhegz.jpeg",
+		"link": "/tailwindcss/instory-space/",
+		"tags": [
+			{
+				"tagName": "vite",
+				"tagBgColor": "#ba61e8"
+			},
+			{
+				"tagName": "handlebars",
+				"tagBgColor": "#f0772b"
+			},
+			{
+				"tagName": "html",
+				"tagBgColor": "#ff6d00"
+			},
+			{
+				"tagName": "tailwindcss",
+				"tagBgColor": "#38bdf8",
+				"tagColor": "#202020"
+			}
+		]
+	},
+	{
 		"date": "1742162280",
 		"title": "tiqets.com",
 		"cover": "https://i.imgur.com/JUGcJMd.jpeg",
