@@ -1,7 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function ProjectCard({ project, latestProjectDate }) {
 	const [imageLoaded, setImageLoaded] = useState(false);
+
+	// Reset loading state when component unmounts or when project changes
+	useEffect(() => {
+		setImageLoaded(false);
+
+		// Clean up function for when component unmounts or project changes
+		return () => {
+			setImageLoaded(false);
+		};
+	}, [project.cover]); // Dependency on project.cover ensures reset when image source changes
 
 	const handleImageLoad = () => {
 		setImageLoaded(true);
@@ -38,11 +48,12 @@ function ProjectCard({ project, latestProjectDate }) {
 				)}
 				<img
 					decoding="async"
-					className="w-full"
+					className={`w-full transition-all duration-300 ${!imageLoaded ? 'opacity-0' : 'opacity-100'}`}
 					src={project.cover}
 					alt={project.title}
 					loading="lazy"
 					onLoad={handleImageLoad}
+					onError={() => setImageLoaded(true)} // Also handle error case to remove loader if image fails
 				/>
 			</div>
 

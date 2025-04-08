@@ -19,7 +19,7 @@ function App() {
 					<ProjectCards />
 				</div>
 			</main>
-			<Footer />
+			<Footer version="2.1"/>
 		</>
 	);
 }

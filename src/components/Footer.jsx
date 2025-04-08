@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Footer = () => {
+function Footer({ version }) {
 	return (
 		<footer className="p-4">
 			<div className="container text-center dark:text-white">
-				@ Hennadii Lapko, 2020 - present, v.2 (react version)
+				@ Hennadii Lapko, 2020 - present, v.{version}
 			</div>
 		</footer>
 	);
-};
+}
 
 export default Footer;

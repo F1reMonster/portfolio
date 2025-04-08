@@ -17,15 +17,17 @@ function ProjectCards({ itemsPerPage }) {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch('/data/projects.json')
-			.then(response => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! Status: ${response.status}`);
-				}
-				return response.json();
-			})
-			.then(data => {
-				const sortedProjects = data.sort((a, b) => b.date - a.date);
+		
+		const fetchProjects = async () => {
+			try {
+				const response = await fetch('/data/projects.json');
+				const data = await response.json();
+
+				// Sort projects by date in descending order (newest first)
+				const sortedProjects = [...data].sort((a, b) => {
+					return parseInt(b.date) - parseInt(a.date);
+				});
+
 				setProjects(sortedProjects);
 
 				// Збираємо всі унікальні теги з даних
@@ -40,12 +42,14 @@ function ProjectCards({ itemsPerPage }) {
 
 				setAllTags(sortedTags);
 				setLoading(false);
-			})
-			.catch(error => {
-				console.error('Помилка завантаження даних:', error);
+			} catch (error) {
+				console.error('Помилка завантаження проектів:', error);
 				setError(error.message);
 				setLoading(false);
-			});
+			}
+		};
+
+		fetchProjects();
 	}, []);
 
 	// Фільтруємо проекти за обраним тегом
@@ -146,6 +150,7 @@ function ProjectCards({ itemsPerPage }) {
 				<div className="py-10 text-center text-gray-500">
 					<p>Проекти не знайдено</p>
 				</div>
+				
 			)}
 
 			{/* Компонент пагінації */}
